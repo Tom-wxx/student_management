@@ -4,15 +4,21 @@
 	
 	<!-- 学生登录 -->
 	<select id="login" parameterType="student" resultType="int">
-		select state from tb_student where sid=#{sid} and spwd=#{spwd}
+		select state 
+		from tb_student 
+		where sid=#{sid} and spwd=#{spwd}
 	</select>
 	<!-- 登录成功 -->
 	<update id="loginsuccess" parameterType="student">
-		update state=1 from tb_student where sid=#{sid}
+		update state=1 
+		from tb_student 
+		where sid=#{sid}
 	</update>
 	<!-- 查询学生信息 -->
 	<select id="fidstu" parameterType="int" resultType="student">
-		select * from tb_student stu,tb_class cla,tb_authority auth where stu.classId=cla.classId and stu.authorId=auth.authorId and sid=#{sid}
+		select * 
+		from tb_student stu,tb_class cla,tb_authority auth 
+		where stu.classId=cla.classId and stu.authorId=auth.authorId and sid=#{sid}
 	</select>
 	<!-- 查询密码 -->
 	<select id="findpwd" parameterType="int" resultType="student">
@@ -24,7 +30,9 @@
 	</update>
 	<!-- 老师查询成绩分数 -->
 	<select id="findscore" parameterType="int" resultType="score">
-		select distinct courseName,score,tname from tb_score core,tb_course course,tb_teacher tea where core.courseId=course.courseId and course.courseId=tea.courseId and sid=#{sid}
+		select distinct courseName,score,tname 
+		from tb_score core,tb_course course,tb_teacher tea 
+		where core.courseId=course.courseId and course.courseId=tea.courseId and sid=#{sid}
 	</select>
 	
 </mapper>
