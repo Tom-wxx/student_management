@@ -21,7 +21,7 @@ public class StuController {
 	@RequestMapping("/findpwd")
 	@ResponseBody
 	public Student findpwd(Integer sid){
-		return studentservice.findpwd(sid);
+		return studentservice.findpwd(sid);  
 	}
 	
 	//修改密码
