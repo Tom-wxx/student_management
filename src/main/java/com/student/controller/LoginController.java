@@ -55,7 +55,9 @@ public class LoginController {
 			Student stu=stuservice.findstu(id);
 			mav.addObject("stu", stu);
 			mav.setViewName("stuview");
-		} 
-		return null;
+		} else{
+			mav.setViewName("wang");
+		}
+		return mav;
 	}
 }
