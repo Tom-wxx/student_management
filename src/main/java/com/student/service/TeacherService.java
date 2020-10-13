@@ -4,7 +4,7 @@ import com.student.pojo.Teacher;
 
 public interface TeacherService {
 
-	Integer login(Teacher tea);
+	public Integer login(Teacher tea);
 	
-	void loginsuccess(Teacher tea);
+	public void loginsuccess(Teacher tea);
 }
