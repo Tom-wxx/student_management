@@ -2,27 +2,29 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
 <mapper namespace="com.student.mapper.StudentMapper">
 	
+	<!-- 学生登录 -->
 	<select id="login" parameterType="student" resultType="int">
 		select state from tb_student where sid=#{sid} and spwd=#{spwd}
 	</select>
-	
+	<!-- 登录成功 -->
 	<update id="loginsuccess" parameterType="student">
 		update state=1 from tb_student where sid=#{sid}
 	</update>
-	
+	<!-- 查询学生信息 -->
 	<select id="fidstu" parameterType="int" resultType="student">
 		select * from tb_student stu,tb_class cla,tb_authority auth where stu.classId=cla.classId and stu.authorId=auth.authorId and sid=#{sid}
 	</select>
-	
+	<!-- 查询密码 -->
 	<select id="findpwd" parameterType="int" resultType="student">
 		select * from tb_student where sid=#{sid}
 	</select>
-	
+	<!-- 修改密码 -->
 	<update id="uppwd" parameterType="student">
 		update spwd=#{spwd} from tb_student where sid=#{sid}
 	</update>
-	
+	<!-- 老师查询成绩分数 -->
 	<select id="findscore" parameterType="int" resultType="score">
 		select distinct courseName,score,tname from tb_score core,tb_course course,tb_teacher tea where core.courseId=course.courseId and course.courseId=tea.courseId and sid=#{sid}
 	</select>
+	
 </mapper>
