@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="com.student.mapper.TeacherMapper">
+
+	<select id="login" parameterType="teacher" resultType="int">
+		select state from tb_teacher where tid=#{tid} and tpwd=#{spwd}
+	</select>
+	
+	<update id="loginsuccess" parameterType="teacher">
+		update state=1 from tb_teacher where tid=#{tid}
+	</update>
+	
+	<select id="findtea" parameterType="int" resultType="teacher">
+		select * from tb_teacher tea,tb_authority auth,tb_course course where tea
+	</select>
+</mapper>

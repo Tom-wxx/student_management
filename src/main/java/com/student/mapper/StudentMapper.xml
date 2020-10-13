@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="com.student.mapper.StudentMapper">
+	
+	<select id="login" parameterType="student" resultType="int">
+		select state from tb_student where sid=#{sid} and spwd=#{spwd}
+	</select>
+	
+	<update id="loginsuccess" parameterType="student">
+		update state=1 from tb_student where sid=#{sid}
+	</update>
+	
+	<select id="fidstu" parameterType="int" resultType="student">
+		select * from tb_student stu,tb_class cla,tb_authority auth where stu.classId=cla.classId and stu.authorId=auth.authorId and sid=#{sid}
+	</select>
+	
+	<select id="findpwd" parameterType="int" resultType="student">
+		select * from tb_student where sid=#{sid}
+	</select>
+	
+	<update id="uppwd" parameterType="student">
+		update spwd=#{spwd} from tb_student where sid=#{sid}
+	</update>
+	
+	<select id="findscore" parameterType="int" resultType="score">
+		select distinct courseName,score,tname from tb_score core,tb_course course,tb_teacher tea where core.courseId=course.courseId and course.courseId=tea.courseId and sid=#{sid}
+	</select>
+</mapper>
